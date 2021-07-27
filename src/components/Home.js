@@ -4,36 +4,30 @@ import API from '../API';
 // Config
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL} from '../config';
 // Componentas
-
+import HeroImage from './HeroImage/HeroImage';
 // Hook
-
+import { useHomeFetch } from '../hooks/useHomeFetch';
 // Image
 import NoImage from '../images/no_image.jpg'
 
 const Home = () => {
-  const [state, setState] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const { state, loading, error } = useHomeFetch();
 
-  const fetchMovies = async (page, searchTerm = '') => {
-    try {
-      setError(false);
-      setLoading(true);
+  console.log(state);
 
-      const movies = await API.fetchMovies(searchTerm, page); 
-      console.log(movies);
-
-    } catch (error) {
-      setError(true);
-    }
-  };
-
-  //Initial render
-    useEffect (() => {
-      fetchMovies(1)
-  }, []);
-
-  return <div>Home page</div>
+  return (
+    <>
+      {state.results[0]?
+      <HeroImage
+        image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+        title={state.results[0].original.title}
+        text={state.results[0].overview}
+      /> 
+      : null
+      }
+    
+    </>
+  )
 };
 
 export default Home;
