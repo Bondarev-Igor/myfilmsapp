@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 //API
 import API from '../API';
 // Config
@@ -8,6 +8,7 @@ import HeroImage from './HeroImage/HeroImage';
 import Grid from './Grid/Grid';
 import Thumb from './Thumb/Thumb';
 import Spinner from './Spinner'
+import SearchBar from './SearchBar';
 
 // Hook
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -15,7 +16,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg'
 
 const Home = () => {
-  const { state, loading, error } = useHomeFetch();
+  const { state, loading, error, setSearchTerm } = useHomeFetch();
 
   console.log(state);
 
@@ -29,6 +30,7 @@ const Home = () => {
       /> 
       : null
       }
+      <SearchBar setSearchTerm={setSearchTerm}/>
       <Grid header='Popular Movies'>
         {state.results.map(movie => (
           <Thumb 
