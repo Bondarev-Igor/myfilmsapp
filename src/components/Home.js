@@ -4,7 +4,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL} from '../config';
 
 // Componentas
 import HeroImage from './HeroImage/HeroImage';
-import Grid from './Grid/Grid';
+import Grid from './Grid';
 import Thumb from './Thumb/Thumb';
 import Spinner from './Spinner'
 import SearchBar from './SearchBar';
