@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 //Image
 import searchIcon from '../../images/search-icon.svg';
 //Styles
-import { Wrapper, Content } from './Search.styles';
+import { Wrapper, Content } from './SearchBar.styles';
 
 const SearchBar = ({ setSearchTerm }) => {
 
-	const [state, setState] = useState();
+	const [state, setState] = useState('');
 	const initial = useRef(true)
 
 	useEffect(() => {
